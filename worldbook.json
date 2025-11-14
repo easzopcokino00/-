@@ -1,0 +1,412 @@
+{
+  "worldbook": {
+    "version": "1.0.0",
+    "lastUpdated": "2024-11-14",
+    "description": "Merged career systems for academic and entertainment professions",
+    "sharedResources": {
+      "locations": {
+        "university_campus": {
+          "uid": "loc_university_campus",
+          "name": "University Campus",
+          "type": "educational",
+          "accessibleBy": ["academic", "entertainment"],
+          "description": "A sprawling educational complex that houses both academic facilities and entertainment venues"
+        },
+        "performance_hall": {
+          "uid": "loc_performance_hall",
+          "name": "Grand Performance Hall",
+          "type": "entertainment",
+          "accessibleBy": ["academic", "entertainment"],
+          "description": "Main venue for performances, lectures, and academic ceremonies"
+        },
+        "research_library": {
+          "uid": "loc_research_library",
+          "name": "Central Research Library",
+          "type": "educational",
+          "accessibleBy": ["academic", "entertainment"],
+          "description": "Extensive collection of academic and performing arts resources"
+        },
+        "media_studio": {
+          "uid": "loc_media_studio",
+          "name": "Digital Media Studio",
+          "type": "production",
+          "accessibleBy": ["academic", "entertainment"],
+          "description": "Recording and production facilities for both educational content and entertainment"
+        }
+      },
+      "organizations": {
+        "arts_council": {
+          "uid": "org_arts_council",
+          "name": "Arts and Education Council",
+          "type": "governing",
+          "oversees": ["academic", "entertainment"],
+          "description": "Joint governing body for academic and entertainment programs"
+        },
+        "student_union": {
+          "uid": "org_student_union",
+          "name": "Student Union",
+          "type": "student",
+          "serves": ["academic", "entertainment"],
+          "description": "Student organization representing both academic and entertainment interests"
+        },
+        "alumni_network": {
+          "uid": "org_alumni_network",
+          "name": "Alumni Network",
+          "type": "professional",
+          "includes": ["academic", "entertainment"],
+          "description": "Professional network connecting graduates from both career paths"
+        }
+      }
+    },
+    "careerSystems": {
+      "academic": {
+        "prefix": "acad_",
+        "name": "Academic Career System",
+        "description": "Progressive academic professions from student to administrator",
+        "statusBarConfig": {
+          "progressField": "acad_progress",
+          "statusField": "acad_status",
+          "levelField": "acad_level",
+          "experienceField": "acad_experience"
+        },
+        "professions": {
+          "acad_student": {
+            "uid": "acad_student",
+            "name": "Student",
+            "level": 1,
+            "description": "Beginning academic journey",
+            "requirements": {
+              "minimumAge": 16,
+              "education": "high_school"
+            },
+            "skills": ["basic_research", "note_taking", "critical_thinking"],
+            "nextProfession": "acad_undergraduate",
+            "locations": ["loc_university_campus", "loc_research_library"],
+            "organizations": ["org_student_union"]
+          },
+          "acad_undergraduate": {
+            "uid": "acad_undergraduate",
+            "name": "Undergraduate Student",
+            "level": 2,
+            "description": "Pursuing bachelor's degree",
+            "requirements": {
+              "previousProfession": "acad_student",
+              "credits": 30
+            },
+            "skills": ["academic_writing", "research_methods", "presentation_skills"],
+            "nextProfession": "acad_graduate",
+            "locations": ["loc_university_campus", "loc_research_library"],
+            "organizations": ["org_student_union"],
+            "crossReferences": {
+              "entertainment": ["ent_performer", "ent_apprentice"]
+            }
+          },
+          "acad_graduate": {
+            "uid": "acad_graduate",
+            "name": "Graduate Student",
+            "level": 3,
+            "description": "Advanced study and research",
+            "requirements": {
+              "previousProfession": "acad_undergraduate",
+              "bachelorDegree": true
+            },
+            "skills": ["advanced_research", "statistical_analysis", "academic_publishing"],
+            "nextProfession": "acad_researcher",
+            "locations": ["loc_university_campus", "loc_research_library"],
+            "organizations": ["org_student_union"]
+          },
+          "acad_researcher": {
+            "uid": "acad_researcher",
+            "name": "Researcher",
+            "level": 4,
+            "description": "Conducting independent research",
+            "requirements": {
+              "previousProfession": "acad_graduate",
+              "publications": 2
+            },
+            "skills": ["grant_writing", "peer_review", "data_analysis"],
+            "nextProfession": "acad_professor",
+            "locations": ["loc_university_campus", "loc_research_library"],
+            "organizations": ["org_arts_council"],
+            "crossReferences": {
+              "entertainment": ["ent_director", "ent_producer"]
+            }
+          },
+          "acad_professor": {
+            "uid": "acad_professor",
+            "name": "Professor",
+            "level": 5,
+            "description": "Teaching and mentoring students",
+            "requirements": {
+              "previousProfession": "acad_researcher",
+              "phdDegree": true
+            },
+            "skills": ["curriculum_design", "mentorship", "academic_leadership"],
+            "nextProfession": "acad_department_head",
+            "locations": ["loc_university_campus", "loc_performance_hall"],
+            "organizations": ["org_arts_council", "org_alumni_network"]
+          },
+          "acad_department_head": {
+            "uid": "acad_department_head",
+            "name": "Department Head",
+            "level": 6,
+            "description": "Leading academic department",
+            "requirements": {
+              "previousProfession": "acad_professor",
+              "yearsExperience": 5
+            },
+            "skills": ["administration", "budget_management", "strategic_planning"],
+            "nextProfession": "acad_dean",
+            "locations": ["loc_university_campus"],
+            "organizations": ["org_arts_council"]
+          },
+          "acad_dean": {
+            "uid": "acad_dean",
+            "name": "Dean",
+            "level": 7,
+            "description": "Leading academic faculty",
+            "requirements": {
+              "previousProfession": "acad_department_head",
+              "administrativeExperience": 3
+            },
+            "skills": ["institutional_leadership", "policy_development", "fundraising"],
+            "nextProfession": "acad_chancellor",
+            "locations": ["loc_university_campus", "loc_performance_hall"],
+            "organizations": ["org_arts_council", "org_alumni_network"]
+          },
+          "acad_chancellor": {
+            "uid": "acad_chancellor",
+            "name": "Chancellor",
+            "level": 8,
+            "description": "Highest academic authority",
+            "requirements": {
+              "previousProfession": "acad_dean",
+              "executiveExperience": 5
+            },
+            "skills": ["executive_leadership", "institutional_vision", "public_relations"],
+            "locations": ["loc_university_campus", "loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_arts_council", "org_alumni_network"],
+            "isTerminal": true
+          }
+        },
+        "statusFlags": {
+          "active": "Currently enrolled/employed",
+          "sabbatical": "On academic leave",
+          "emeritus": "Retired with honors",
+          "suspended": "Temporary suspension",
+          "graduated": "Completed program"
+        }
+      },
+      "entertainment": {
+        "prefix": "ent_",
+        "name": "Entertainment Career System",
+        "description": "Progressive entertainment professions from amateur to executive",
+        "statusBarConfig": {
+          "progressField": "ent_progress",
+          "statusField": "ent_status",
+          "levelField": "ent_level",
+          "experienceField": "ent_experience"
+        },
+        "professions": {
+          "ent_apprentice": {
+            "uid": "ent_apprentice",
+            "name": "Apprentice Performer",
+            "level": 1,
+            "description": "Beginning entertainment career",
+            "requirements": {
+              "minimumAge": 16,
+              "audition": true
+            },
+            "skills": ["basic_performance", "stage_presence", "rehearsal_discipline"],
+            "nextProfession": "ent_performer",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_student_union"]
+          },
+          "ent_performer": {
+            "uid": "ent_performer",
+            "name": "Performer",
+            "level": 2,
+            "description": "Regular performance engagements",
+            "requirements": {
+              "previousProfession": "ent_apprentice",
+              "performances": 10
+            },
+            "skills": ["character_development", "vocal_technique", "movement"],
+            "nextProfession": "ent_featured_performer",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_student_union"],
+            "crossReferences": {
+              "academic": ["acad_undergraduate", "acad_graduate"]
+            }
+          },
+          "ent_featured_performer": {
+            "uid": "ent_featured_performer",
+            "name": "Featured Performer",
+            "level": 3,
+            "description": "Principal roles and solos",
+            "requirements": {
+              "previousProfession": "ent_performer",
+              "leadRoles": 3
+            },
+            "skills": ["advanced_performance", "improvisation", "audience_engagement"],
+            "nextProfession": "ent_principal_performer",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_arts_council"]
+          },
+          "ent_principal_performer": {
+            "uid": "ent_principal_performer",
+            "name": "Principal Performer",
+            "level": 4,
+            "description": "Lead performer in major productions",
+            "requirements": {
+              "previousProfession": "ent_featured_performer",
+              "majorProductions": 5
+            },
+            "skills": ["artistic_direction", "mentorship", "brand_development"],
+            "nextProfession": "ent_director",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_arts_council"],
+            "crossReferences": {
+              "academic": ["acad_researcher", "acad_professor"]
+            }
+          },
+          "ent_director": {
+            "uid": "ent_director",
+            "name": "Director",
+            "level": 5,
+            "description": "Creative direction of productions",
+            "requirements": {
+              "previousProfession": "ent_principal_performer",
+              "leadershipExperience": 2
+            },
+            "skills": ["production_planning", "casting", "artistic_vision"],
+            "nextProfession": "ent_producer",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_arts_council"]
+          },
+          "ent_producer": {
+            "uid": "ent_producer",
+            "name": "Producer",
+            "level": 6,
+            "description": "Managing production logistics and finance",
+            "requirements": {
+              "previousProfession": "ent_director",
+              "productionsManaged": 3
+            },
+            "skills": ["budget_management", "marketing", "resource_allocation"],
+            "nextProfession": "ent_executive_producer",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_arts_council"]
+          },
+          "ent_executive_producer": {
+            "uid": "ent_executive_producer",
+            "name": "Executive Producer",
+            "level": 7,
+            "description": "Overseeing multiple productions",
+            "requirements": {
+              "previousProfession": "ent_producer",
+              "successfullProductions": 10
+            },
+            "skills": ["strategic_planning", "investment", "industry_relations"],
+            "nextProfession": "ent_studio_head",
+            "locations": ["loc_performance_hall", "loc_media_studio"],
+            "organizations": ["org_arts_council", "org_alumni_network"]
+          },
+          "ent_studio_head": {
+            "uid": "ent_studio_head",
+            "name": "Studio Head",
+            "level": 8,
+            "description": "Leading entertainment organization",
+            "requirements": {
+              "previousProfession": "ent_executive_producer",
+              "executiveExperience": 5
+            },
+            "skills": ["executive_leadership", "industry_vision", "talent_development"],
+            "locations": ["loc_performance_hall", "loc_media_studio", "loc_university_campus"],
+            "organizations": ["org_arts_council", "org_alumni_network"],
+            "isTerminal": true
+          }
+        },
+        "statusFlags": {
+          "active": "Currently performing/employed",
+          "on_tour": "Traveling for performances",
+          "retired": "Retired from performing",
+          "between_projects": "Between engagements",
+          "contracted": "Under contract"
+        }
+      }
+    },
+    "bridgingLore": {
+      "interactions": [
+        {
+          "uid": "bridge_acad_ent_collaboration",
+          "name": "Academic-Entertainment Collaboration",
+          "description": "Joint projects between academic researchers and entertainment professionals",
+          "participants": ["acad_researcher", "acad_professor", "ent_director", "ent_producer"],
+          "locations": ["loc_media_studio", "loc_performance_hall"],
+          "outcomes": ["educational_content", "research_dissemination", "artistic_innovation"]
+        },
+        {
+          "uid": "bridge_student_performer_exchange",
+          "name": "Student-Performer Exchange Program",
+          "description": "Program allowing academic students to participate in entertainment and vice versa",
+          "participants": ["acad_undergraduate", "acad_graduate", "ent_apprentice", "ent_performer"],
+          "locations": ["loc_university_campus", "loc_performance_hall"],
+          "organizations": ["org_student_union", "org_arts_council"]
+        },
+        {
+          "uid": "bridge_alumni_mentorship",
+          "name": "Cross-Disciplinary Alumni Mentorship",
+          "description": "Alumni from both systems mentoring current participants",
+          "participants": ["acad_chancellor", "ent_studio_head", "org_alumni_network"],
+          "description": "Senior professionals from both career paths guide next generation"
+        }
+      ],
+      "sharedQuests": [
+        {
+          "uid": "quest_interdisciplinary_production",
+          "name": "Create Interdisciplinary Production",
+          "description": "Produce a work that combines academic research with entertainment",
+          "requiredProfessions": ["acad_professor", "ent_director"],
+          "rewards": ["cross_system_recognition", "shared_resources_access"]
+        },
+        {
+          "uid": "quest_educational_entertainment_series",
+          "name": "Educational Entertainment Series",
+          "description": "Develop an entertainment series with educational value",
+          "requiredProfessions": ["acad_researcher", "ent_producer"],
+          "rewards": ["funding_opportunities", "audience_expansion"]
+        }
+      ]
+    },
+    "statusBarIntegration": {
+      "sharedFields": {
+        "overall_progress": "Combined progress across both systems",
+        "cross_system_status": "Status of interactions between systems",
+        "bridging_level": "Level of cross-system collaboration"
+      },
+      "compatibility": {
+        "supportsDualProgression": true,
+        "allowsSimultaneousStatus": true,
+        "preventsMutuallyExclusiveTriggers": true
+      },
+      "hooks": {
+        "placeholder_ticket_5": "StatusBar implementation for academic system",
+        "placeholder_ticket_6": "StatusBar implementation for entertainment system",
+        "integration_hooks": {
+          "on_cross_system_promotion": "Trigger when promotion affects both systems",
+          "on_shared_resource_access": "Trigger when accessing shared resources",
+          "on_bridging_quest_completion": "Trigger when bridging quests completed"
+        }
+      }
+    },
+    "validation": {
+      "uidConflicts": [],
+      "namingConflicts": [],
+      "contradictoryLore": [],
+      "sharedResourceIntegrity": "verified",
+      "crossReferenceConsistency": "verified",
+      "statusBarAlignment": "ready"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "worldbook-validator",
+  "version": "1.0.0",
+  "description": "Validation scripts for SillyTavern worldbook/lorebook",
+  "main": "index.js",
+  "scripts": {
+    "validate": "node scripts/validate-worldbook.js",
+    "validate:json": "node scripts/validate-worldbook.js --format json",
+    "validate:markdown": "node scripts/validate-worldbook.js --format markdown"
+  },
+  "keywords": [
+    "worldbook",
+    "lorebook",
+    "validation",
+    "sillytavern"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
