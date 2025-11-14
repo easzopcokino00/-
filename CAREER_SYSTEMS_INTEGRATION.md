@@ -101,6 +101,24 @@ The integration has been verified for:
 - ✅ Cross-reference consistency
 - ✅ StatusBar alignment readiness
 
+### Automated Validation
+
+As part of Ticket #8 (Build validation scripts), an automated validation system has been implemented:
+
+- **Script**: `scripts/validate-worldbook.js`
+- **Reports**: Generated in `reports/` directory
+- **Running**: `npm run validate`
+
+The validation script performs:
+1. Schema compliance checks
+2. UID uniqueness validation
+3. Circular reference detection in profession chains
+4. Cross-reference validation (locations, organizations, professions)
+5. Trigger diagnostics (when applicable)
+6. Naming convention compliance
+
+See [README.md](README.md#validation-features) and [VALIDATION_GUIDE.md](VALIDATION_GUIDE.md) for detailed information on running validations and interpreting results.
+
 ## Future Development
 
 ### StatusBar Implementation

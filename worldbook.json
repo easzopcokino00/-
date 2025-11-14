@@ -98,7 +98,7 @@
             "locations": ["loc_university_campus", "loc_research_library"],
             "organizations": ["org_student_union"],
             "crossReferences": {
-              "entertainment": ["ent_performer", "ent_technician"]
+              "entertainment": ["ent_performer", "ent_apprentice"]
             }
           },
           "acad_graduate": {

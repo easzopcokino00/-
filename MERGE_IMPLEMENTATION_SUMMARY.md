@@ -111,4 +111,15 @@ The merged career systems are now ready for:
 - **Comprehensive shared resource** model
 - **Clear documentation** for future development
 
+## Validation Automation (Ticket 8)
+
+As part of the ongoing validation automation initiative, a dedicated Node.js script now validates the worldbook data:
+
+- `npm run validate` – runs the complete validation suite (schema, recursion, triggers)
+- Reports are generated in `reports/` (`validation-report-latest.json` and `.md`)
+- CI-ready exit codes (non-zero on critical failures)
+- Detailed Markdown/JSON output for auditing and debugging
+
+See [README.md](README.md#validation-features) for detailed usage instructions and report breakdown.
+
 The merge has been completed successfully with all acceptance criteria met and the foundation laid for future development phases.
