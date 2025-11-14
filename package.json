@@ -1,0 +1,32 @@
+{
+  "name": "optimized-worldbook",
+  "version": "1.0.0",
+  "description": "An optimized worldbook package containing lore, documentation, and tools",
+  "main": "index.js",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "package": "./scripts/package.sh",
+    "clean": "rm -rf dist/*",
+    "validate": "./scripts/validate.sh"
+  },
+  "keywords": [
+    "worldbook",
+    "lore",
+    "documentation",
+    "rpg",
+    "world-building"
+  ],
+  "author": "Worldbook Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/optimized-worldbook.git"
+  },
+  "files": [
+    "lorebook/",
+    "docs/",
+    "scripts/",
+    "reports/",
+    "README.md"
+  ]
+}
